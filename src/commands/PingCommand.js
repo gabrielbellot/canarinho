@@ -7,7 +7,7 @@ class PingCommand extends Command {
 	}
 
 	run(message, args) {
-		message.reply(`**Pong!** :ping_pong: \`${message.client.ping}ms\``)
+		message.reply(`**Pong!** :ping_pong: \`${message.client.ws.ping}ms\``)
 	}
 
 }
