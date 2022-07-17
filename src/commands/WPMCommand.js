@@ -14,8 +14,11 @@ class WPMCommand extends Command {
         message.reply("Escreva a seguinte frase dentro de **30** segundos: ```" + phrase + "```")
         const millis = new Date().getTime()
 
-        const collector = message.channel.createMessageCollector(m => m.author.id === message.author.id, {time:30000})
+        const collector = message.channel.createMessageCollector({ time:30000 })
         collector.on("collect", (m) => {
+            if (m.author.id !== message.author.id)
+                return
+
             collector.stop("Success")
             const proccessedContent = this.normalize(m.content)
 

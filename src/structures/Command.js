@@ -22,7 +22,7 @@ class Command {
 	}
 
 	async handle(message) {
-		const rawArgs = message.content.split(" ")
+		const rawArgs = message.content.toLowerCase().split(" ")
 		const usedLabel = rawArgs[0]
 
 		const prefix = process.env.PREFIX
