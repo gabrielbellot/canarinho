@@ -5,6 +5,10 @@ if (!process.env.TOKEN) {
 	process.exit(1)
 }
 
+process.on("uncaughtException", (err) => {
+	console.log("Erro GRAVE! " + err)
+})
+
 const { Intents } = require("discord.js")
 const token = process.env.TOKEN
 const Canarinho = require("./src/Canarinho")
