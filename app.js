@@ -13,5 +13,5 @@ const { Intents } = require("discord.js")
 const token = process.env.TOKEN
 const Canarinho = require("./src/Canarinho")
 
-const bot = new Canarinho({ intents: [ Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS ] })
+const bot = new Canarinho({ intents: new Intents(32767) })
 bot.start(token)
