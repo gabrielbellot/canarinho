@@ -10,10 +10,6 @@ class BrasileiraoCommand extends Command {
 
     async run(message, args) {
         const brasileirao = new Brasileirao()
-        if (args[0] === "emoji") {
-            brasileirao.createTeamEmojis(message.guild)
-            return
-        }
 
         let table = await brasileirao.fetchTable("A")
 
