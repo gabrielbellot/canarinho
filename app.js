@@ -1,4 +1,4 @@
-//require("dotenv").config()
+require("dotenv").config()
 
 if (!process.env.TOKEN) {
 	console.error("Você não definiu a variável \"TOKEN\" no \".env\"!")
