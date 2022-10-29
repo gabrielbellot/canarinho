@@ -27,6 +27,7 @@ class Brasileirao {
             let matchesWonSelector = `#menu-panel > article > div.container > div > div > section.m-b-50.p-t-10.row > div.col-md-8.col-lg-9 > table > tbody > tr:nth-child(${i}) > td:nth-child(4)`
             let matchesTiedSelector = `#menu-panel > article > div.container > div > div > section.m-b-50.p-t-10.row > div.col-md-8.col-lg-9 > table > tbody > tr:nth-child(${i}) > td:nth-child(5)`
             let matchesLostSelector = `#menu-panel > article > div.container > div > div > section.m-b-50.p-t-10.row > div.col-md-8.col-lg-9 > table > tbody > tr:nth-child(${i}) > td:nth-child(6)`
+            let goalsDifferenceSelector = `#menu-panel > article > div.container > div > div > section.m-b-50.p-t-10.row > div.col-md-8.col-lg-9 > table > tbody > tr:nth-child(${i}) > td:nth-child(9)`
 
             table.push({
                 "name":$(teamNameSelector).text(),
@@ -34,7 +35,8 @@ class Brasileirao {
                 "matches":$(teamMatchesSelector).text(),
                 "matchesWon":$(matchesWonSelector).text(),
                 "matchesTied":$(matchesTiedSelector).text(),
-                "matchesLost":$(matchesLostSelector).text()
+                "matchesLost":$(matchesLostSelector).text(),
+                "goalsDifference":$(goalsDifferenceSelector).text()
             })
         }
 
