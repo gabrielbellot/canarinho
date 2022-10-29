@@ -17,12 +17,16 @@ class BrasileiraoCommand extends Command {
         optionsMsg.react("🅱️")
 
         let division = ""
+        let embedImg
+
         let optionsCollector = optionsMsg.createReactionCollector({ filter: (reaction, user) => !(user.bot) && user.id === message.author.id})
         optionsCollector.on("collect", async (r, author) => {
             if (r.emoji.name === "🅰️") {
                 division = "A"
+                embedImg = "https://upload.wikimedia.org/wikipedia/pt/4/42/Campeonato_Brasileiro_S%C3%A9rie_A_logo.png"
             } else if (r.emoji.name === "🅱️") {
                 division = "B"
+                embedImg = "https://upload.wikimedia.org/wikipedia/pt/f/f4/Campeonato_Brasileiro_S%C3%A9rie_B_logo.png"
             } else {
                 return
             }
@@ -47,13 +51,17 @@ class BrasileiraoCommand extends Command {
                 .setTitle("⚽ Campeonato Brasileiro 2022 - Tabela")
                 .setDescription(description1)
                 .setColor("DARK_GREEN")
-                .setThumbnail("https://upload.wikimedia.org/wikipedia/pt/4/42/Campeonato_Brasileiro_S%C3%A9rie_A_logo.png")
+                .setThumbnail(embedImg)
+                .setFooter("Atualizado ")
+                .setTimestamp(new Date())
             
             let embed2 = new MessageEmbed()
                 .setTitle("⚽ Campeonato Brasileiro 2022 - Tabela")
                 .setDescription(description2)
                 .setColor("DARK_GREEN")
-                .setThumbnail("https://upload.wikimedia.org/wikipedia/pt/4/42/Campeonato_Brasileiro_S%C3%A9rie_A_logo.png")
+                .setThumbnail(embedImg)
+                .setFooter("Atualizado ")
+                .setTimestamp(new Date())
 
             let msg = await message.channel.send({ embeds: [embed1] })
             await msg.react(`▶️`)
