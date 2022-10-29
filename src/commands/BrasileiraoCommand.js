@@ -35,11 +35,11 @@ class BrasileiraoCommand extends Command {
             let description2 = ""
             table.forEach((team, idx) => {
                 if (idx < 10) {
-                    description1 += `**${idx + 1}º** -** ${team.name}** - **${team.points}** pontos\n**✅ PJ:** ${team.matches} | **🟢 V:** ${team.matchesWon} | **🟡 E:** ${team.matchesTied} | **🔴 D:** ${team.matchesLost} | 🥅 **SG:** ${team.goalsDifference} \n\n`
+                    description1 += `**${idx + 1}º** -** ${team.name}** - **${team.points}** pontos\n**✅ PJ:** ${team.matches} | **🟢 V:** ${team.matchesWon} | **🟡 E:** ${team.matchesTied} | **🔴 D:** ${team.matchesLost} | 🥅 **SG:** \`${team.goalsDifference}\` \n\n`
                 }
 
                 if (idx >= 10) {
-                    description2 += `**${idx + 1}º** -** ${team.name}** - **${team.points}** pontos\n**✅ PJ:** ${team.matches} | **🟢 V:** ${team.matchesWon} | **🟡 E:** ${team.matchesTied} | **🔴 D:** ${team.matchesLost} | 🥅 **SG:** ${team.goalsDifference} \n\n`
+                    description2 += `**${idx + 1}º** -** ${team.name}** - **${team.points}** pontos\n**✅ PJ:** ${team.matches} | **🟢 V:** ${team.matchesWon} | **🟡 E:** ${team.matchesTied} | **🔴 D:** ${team.matchesLost} | 🥅 **SG:** \`${team.goalsDifference}\` \n\n`
                 }
             })
 
