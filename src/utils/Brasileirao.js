@@ -51,8 +51,7 @@ class Brasileirao {
             case "B": url = "https://www.cbf.com.br/futebol-brasileiro/competicoes/campeonato-brasileiro-serie-b"; break
             // Séries C e D são realizadas em outro formato - Não há tabela de pontos corridos como na primeira e na segunda divisão.
         }
-
-        let table = []
+        
         let request = await axios.get(url, {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36"})
         let body = request.data
         let $ = cheerio.load(body)
