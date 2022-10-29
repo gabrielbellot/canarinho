@@ -39,16 +39,16 @@ class BrasileiraoCommand extends Command {
             let description2 = ""
             table.forEach((team, idx) => {
                 if (idx < 10) {
-                    description1 += `**${idx + 1}º** -** ${team.name}** - **${team.points}** pontos\n**✅ PJ:** ${team.matches} | **🟢 V:** ${team.matchesWon} | **🟡 E:** ${team.matchesTied} | **🔴 D:** ${team.matchesLost} | 🥅 **SG:** \`${team.goalsDifference}\` \n\n`
+                    description1 += `**${idx + 1}º** -** ${team.name}** - **${team.points}** pontos\n**✅ PJ:** ${team.matches} | **🟢 V:** ${team.matchesWon} | **🟡 E:** ${team.matchesTied} | **🔴 D:** ${team.matchesLost} | 🥅 **SG:** ${team.goalsDifference} \n\n`
                 }
 
                 if (idx >= 10) {
-                    description2 += `**${idx + 1}º** -** ${team.name}** - **${team.points}** pontos\n**✅ PJ:** ${team.matches} | **🟢 V:** ${team.matchesWon} | **🟡 E:** ${team.matchesTied} | **🔴 D:** ${team.matchesLost} | 🥅 **SG:** \`${team.goalsDifference}\` \n\n`
+                    description2 += `**${idx + 1}º** -** ${team.name}** - **${team.points}** pontos\n**✅ PJ:** ${team.matches} | **🟢 V:** ${team.matchesWon} | **🟡 E:** ${team.matchesTied} | **🔴 D:** ${team.matchesLost} | 🥅 **SG:** ${team.goalsDifference} \n\n`
                 }
             })
 
             let embed1 = new MessageEmbed()
-                .setTitle("⚽ Campeonato Brasileiro 2022 - Tabela")
+                .setTitle("⚽ Campeonato Brasileiro Série " + division + " 2022 - Tabela")
                 .setDescription(description1)
                 .setColor("DARK_GREEN")
                 .setThumbnail(embedImg)
@@ -56,7 +56,7 @@ class BrasileiraoCommand extends Command {
                 .setTimestamp(new Date())
             
             let embed2 = new MessageEmbed()
-                .setTitle("⚽ Campeonato Brasileiro 2022 - Tabela")
+                .setTitle("⚽ Campeonato Brasileiro Série " + division + " 2022 - Tabela")
                 .setDescription(description2)
                 .setColor("DARK_GREEN")
                 .setThumbnail(embedImg)
