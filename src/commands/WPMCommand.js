@@ -39,7 +39,7 @@ class WPMCommand extends Command {
             const wpm = Math.round(phraseLength / minutes)
 
             message.reply("Você acertou a frase e demorou **" + seconds + "** segundos para escrever **" + phraseLength + "** palavras!")
-            message.reply("Isso significa que você escreveu aproximadamente **" + wpm + "** palavras por minuto!")
+            message.reply("Isso significa que você pode escrever, aproximadamente, **" + wpm + "** palavras por minuto!")
         })
 
         collector.on("end", (collected, r) => {
