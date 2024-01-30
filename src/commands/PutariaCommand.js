@@ -41,7 +41,9 @@ class PutariaCommand extends Command {
         let chosen = communities.random()
         this.client.debug("Chosen community: " + chosen)
 
-        let request = await Axios.get("https://www.reddit.com/r/" + chosen + "/random/.json")
+        let request = await Axios.get("https://www.reddit.com/r/" + chosen + "/random/.json", {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+        })
         let body = request.data
         let post = body[0].data.children[0].data
 

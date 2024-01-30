@@ -9,7 +9,7 @@ class CurrencyCommand extends Command {
 		super("currency")
 
 		this.usage = "<from> <to> <quantity>"
-		this.aliases = ["exchange", "money"]
+		this.aliases = ["exchange", "money", "moeda", "cambio"]
 	}
 
 	async run(message, args) {
