@@ -8,6 +8,7 @@ const fs = require("fs")
 const Extensions = require("./utils/Extensions")
 
 const moment = require("moment")
+const Snoowrapper = require('snoowrap')
 
 class Canarinho extends Client {
 
@@ -17,6 +18,13 @@ class Canarinho extends Client {
 
 	async start(token) {
 		try {
+			this.reddit = new Snoowrapper({
+				userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+				clientId: process.env.REDDIT_ID,
+				clientSecret: process.env.REDDIT_SECRET,
+				refreshToken: process.env.REDDIT_REFRESH_TOKEN
+			})
+
 			this.commands = []
 
 			await this.login(token)

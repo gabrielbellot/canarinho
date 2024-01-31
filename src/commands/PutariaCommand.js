@@ -41,25 +41,20 @@ class PutariaCommand extends Command {
         let chosen = communities.random()
         this.client.debug("Chosen community: " + chosen)
 
-        let request = await Axios.post("https://www.reddit.com/r/" + chosen + "/random/.json", {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
-        })
-        let body = request.data
-        console.log(body)
-        let post = body[0].data.children[0].data
+        let imgUrl = await this.client.reddit.getSubreddit(chosen).getHot().random().url
 
-        if (isGif && !post.url.endsWith("gif")) {
+        if (isGif && !imgUrl.endsWith("gif")) {
             this.client.debug("Quero um GIF, mas não recebi!")
             return this.getImageUrl(isGif)
         }
 
-        if (!(post.url.endsWith("png")) && !(post.url.endsWith("jpg")) && !(post.url.endsWith("jpeg")) && (!post.url.endsWith("gif"))) {
+        if (!(imgUrl.endsWith("png")) && !(imgUrl.endsWith("jpg")) && !(imgUrl.endsWith("jpeg")) && (!imgUrl.endsWith("gif"))) {
             this.client.debug("Não recebi nem um PNG, nem JPG, nem GIF!!!!")
             return this.getImageUrl(isGif)
         }
 
-        console.log(`${post.url}`)
-        return post.url
+        console.log(imgUrl)
+        return imgUrl
     }
 }
 

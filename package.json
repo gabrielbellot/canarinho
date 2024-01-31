@@ -13,7 +13,8 @@
     "moment": "^2.24.0",
     "npm": "^6.9.0",
     "readdir": "^0.1.0",
-    "readline-sync": "^1.4.9"
+    "readline-sync": "^1.4.9",
+    "snoowrap": "^1.23.0"
   },
   "scripts": {
     "start": "node app.js",
