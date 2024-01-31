@@ -37,7 +37,9 @@ class PutariaCommand extends Command {
             "barelylegalteens",
             "blonde",
             "redheads",
-            "gifsgonewild"
+            "gifsgonewild",
+            "gonewild",
+            "gonewildcouples"
         ]
 
         let chosen = communities.random()
