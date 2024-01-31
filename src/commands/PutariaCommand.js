@@ -18,15 +18,8 @@ class PutariaCommand extends Command {
         this.sendMessage(message, args.length > 0 && args[0] === "gif")
     }
 
-    async sendMessage(message, gif) {
-        let imageUrl
-        if (gif) {
-            this.client.debug("O amigão pediu GIF!")
-            imageUrl = await this.getImageUrl(true)
-        } else {
-            imageUrl = await this.getImageUrl(false)
-        }
-
+    async sendMessage(message, gif = false) {
+        let imageUrl = await this.getImageUrl(gif)
         let embed = new MessageEmbed()
             .setColor("RED")
             .setImage(imageUrl)
