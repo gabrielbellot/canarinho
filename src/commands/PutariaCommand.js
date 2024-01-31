@@ -35,9 +35,15 @@ class PutariaCommand extends Command {
 
         let msg = await message.channel.send({ embeds: [embed] })
         await msg.react("🔁")
+        await msg.react("❌")
 
         let collector = msg.createReactionCollector({ filter: (reaction, user) => !(user.bot) && user.id === message.author.id})
         collector.on("collect", async (r, author) => {
+            if (r.emoji.name === "❌") {
+                await msg.delete()
+                return
+            }
+
             if (r.emoji.name !== "🔁" || r.message.id !== msg.id) 
                 return
             
