@@ -1,6 +1,5 @@
 const Command = require("../structures/Command.js")
 const { MessageEmbed } = require("discord.js")
-const Axios = require("axios")
 
 class PutariaCommand extends Command {
 
@@ -16,17 +15,37 @@ class PutariaCommand extends Command {
             return
         }
 
-        let imageUrl;
+        this.sendMessage(message, args.length > 0 && args[0] === "gif")
+    }
 
-        if (args.length > 0 && args[0] === "gif") {
+    async sendMessage(message, gif) {
+        let imageUrl
+        if (gif) {
             this.client.debug("O amigão pediu GIF!")
             imageUrl = await this.getImageUrl(true)
         } else {
             imageUrl = await this.getImageUrl(false)
         }
 
-        let embed = new MessageEmbed().setColor("BLUE").setImage(imageUrl)
-        message.channel.send(`${imageUrl}`)
+        let embed = new MessageEmbed()
+            .setColor("RED")
+            .setImage(imageUrl)
+            .setFooter("🔥")
+            .setTimestamp(new Date())
+
+        let msg = await message.channel.send({ embeds: [embed] })
+        await msg.react("🔁")
+
+        let collector = msg.createReactionCollector({ filter: (reaction, user) => !(user.bot) && user.id === message.author.id})
+        collector.on("collect", async (r, author) => {
+            if (r.emoji.name !== "🔁" || r.message.id !== msg.id) 
+                return
+            
+            collector.stop()
+
+            await message.channel.sendTyping()
+            this.sendMessage(message, gif)
+        })
     }
 
     async getImageUrl(isGif = false) {
@@ -53,12 +72,12 @@ class PutariaCommand extends Command {
 
         let imgUrl = await this.client.reddit.getSubreddit(chosen).getHot().random().url
 
-        if (isGif && !imgUrl.endsWith("gif") && !(imgUrl.includes("redgifs"))) {
+        if (isGif && !imgUrl.endsWith("gif") && !imgUrl.endsWith("gifv") /*&& !(imgUrl.includes("redgifs"))*/) {
             this.client.debug("Quero um GIF, mas não recebi!")
             return this.getImageUrl(isGif)
         }
 
-        if (!(imgUrl.includes("redgifs")) && !(imgUrl.endsWith("png")) && !(imgUrl.endsWith("jpg")) && !(imgUrl.endsWith("jpeg")) && (!imgUrl.endsWith("gif"))) {
+        if (/*!(imgUrl.includes("redgifs")) && */!(imgUrl.endsWith("png")) && !(imgUrl.endsWith("jpg")) && !(imgUrl.endsWith("jpeg")) && (!imgUrl.endsWith("gif"))) {
             this.client.debug("Não recebi nem um PNG, nem JPG, nem GIF, nem REDGIFS!!!!")
             this.client.debug("O que recebi? " + imgUrl)
             return this.getImageUrl(isGif)
