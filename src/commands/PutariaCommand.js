@@ -45,7 +45,7 @@ class PutariaCommand extends Command {
 
         let imgUrl = await this.client.reddit.getSubreddit(chosen).getHot().random().url
 
-        if (isGif && !imgUrl.endsWith("gif")) {
+        if (isGif && !imgUrl.endsWith("gif") && !(imgUrl.includes("redgifs"))) {
             this.client.debug("Quero um GIF, mas não recebi!")
             return this.getImageUrl(isGif)
         }
