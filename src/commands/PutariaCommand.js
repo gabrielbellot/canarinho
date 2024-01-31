@@ -8,6 +8,8 @@ class PutariaCommand extends Command {
         super("putaria")
     }
 
+    sentPicsCache = []
+
     async run(message, args) {
         if (!message.channel.nsfw) {
             message.reply("O canal <#" + message.channel + "> não permite conteúdo impróprio!")
@@ -53,7 +55,16 @@ class PutariaCommand extends Command {
             return this.getImageUrl(isGif)
         }
 
-        console.log(imgUrl)
+        if (this.sentPicsCache.includes(imgUrl)) {
+            this.client.debug("A imagem recebida já está nas últimas 15 imagens enviadas! Tentando buscar outra...")
+            return this.getImageUrl(isGif)
+        }
+
+        this.sentPicsCache.push(imgUrl)
+        if (this.sentPicsCache.length > 20) {
+            this.sentPicsCache = []
+        }
+
         return imgUrl
     }
 }
