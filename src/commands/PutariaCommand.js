@@ -52,6 +52,7 @@ class PutariaCommand extends Command {
 
         if (!(imgUrl.endsWith("png")) && !(imgUrl.endsWith("jpg")) && !(imgUrl.endsWith("jpeg")) && (!imgUrl.endsWith("gif"))) {
             this.client.debug("Não recebi nem um PNG, nem JPG, nem GIF!!!!")
+            this.client.debug("O que recebi? " + imgUrl)
             return this.getImageUrl(isGif)
         }
 
