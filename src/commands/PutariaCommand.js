@@ -26,7 +26,7 @@ class PutariaCommand extends Command {
         }
 
         let embed = new MessageEmbed().setColor("BLUE").setImage(imageUrl)
-        message.channel.send(`${imageUrl}`/*{ embeds: [embed] }*/)
+        message.channel.send(`${imageUrl}`)
     }
 
     async getImageUrl(isGif = false) {
@@ -66,6 +66,7 @@ class PutariaCommand extends Command {
             this.sentPicsCache = []
         }
 
+        this.client.debug("Image URL : " + imgUrl)
         return imgUrl
     }
 }
