@@ -26,7 +26,7 @@ class PutariaCommand extends Command {
             .setFooter("🔥")
             .setTimestamp(new Date())
 
-        let msg = await message.channel.send({ embeds: [embed] })
+        let msg = await message.channel.send(`<@${message.author.id}>`, { embeds: [embed] })
         await msg.react("🔁")
         await msg.react("❌")
 
