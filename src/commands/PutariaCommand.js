@@ -63,7 +63,12 @@ class PutariaCommand extends Command {
             "titties",
             "latinas",
             "latinacuties",
-            "gwpublic"
+            "gwpublic",
+            "collegesluts",
+            "flashinggirls",
+            "adorablenudes",
+            "playboy",
+            "publicflashing"
         ]
 
         let chosen = communities.random()
