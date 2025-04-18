@@ -24,9 +24,11 @@ Feito em JavaScript com Node.js, o Canarinho busca dados diretamente do site ofi
 ## ⚙️ Funcionalidades
 
 - 💵 Conversão de moedas
+- 🎹🏃 Teste de velocidade de digitação
 - 📊 Ver tabela atualizada da Série A e Série B  
 - 🥅 Checar artilharia do campeonato  
-- ⏱️ Ver próximos jogos  
+- ⏱️ Ver próximos jogos
+- E muitas outras em breve!  
 
 ---
 
