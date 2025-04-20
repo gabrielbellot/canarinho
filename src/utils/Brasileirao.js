@@ -37,7 +37,6 @@ class Brasileirao {
         if (cachedData) return cachedData
 
         const url = `${BASE_URL}/competitions/${competitionId}/standings`
-        console.log(url)
 
         try {
             const response = await axios.get(url, {

@@ -6,6 +6,7 @@ const { readSync } = require("readdir")
 const fs = require("fs")
 
 const Extensions = require("./utils/Extensions")
+const Brasileirao = require("./utils/Brasileirao")
 
 const moment = require("moment")
 
@@ -23,8 +24,10 @@ class Canarinho extends Client {
 
 			this.registerListeners()
 			this.registerCommands()
-
 			this.setupUserActivities()
+
+			// Little workaround to fix caching
+			new Brasileirao().fetchTable("A")
 
 			new Extensions(this).loadExtensions()
 
