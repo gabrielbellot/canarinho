@@ -3,7 +3,7 @@ const NodeCache = require('node-cache')
 
 const cache = new NodeCache({ stdTTL: 600 })
 
-const API_KEY = 'cc65091c4ca843f79ebc6385d7411d89'
+const API_KEY = process.env.FOOTBALLDATA_APIKEY
 const BASE_URL = 'https://api.football-data.org/v4'
 
 class Brasileirao {
