@@ -27,7 +27,9 @@ class Canarinho extends Client {
 			this.setupUserActivities()
 
 			// Little workaround to fix caching
-			new Brasileirao().fetchTable("A")
+			const brasileirao = new Brasileirao()
+			brasileirao.fetchTable("A")
+			brasileirao.fetchTopScorers("A")
 
 			new Extensions(this).loadExtensions()
 
