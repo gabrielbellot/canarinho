@@ -23,8 +23,8 @@ class BrasileiraoCommand extends Command {
             .setTimestamp()
 
         const row = new MessageActionRow().addComponents(
-            new MessageButton().setCustomId('serieA_' + Date.now()).setLabel('📊 Série A').setStyle('PRIMARY'),
-            new MessageButton().setCustomId('scorersA_' + Date.now()).setLabel('⚽ Artilheiros A').setStyle('SUCCESS')
+            new MessageButton().setCustomId('serieA_' + message.author.id).setLabel('📊 Série A').setStyle('PRIMARY'),
+            new MessageButton().setCustomId('scorersA_' + message.author.id).setLabel('⚽ Artilheiros A').setStyle('SUCCESS')
         )
 
         const sentMsg = await message.channel.send({ embeds: [optionsEmbed], components: [row] })
