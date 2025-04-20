@@ -29,7 +29,7 @@ class BrasileiraoCommand extends Command {
 
         const sentMsg = await message.channel.send({ embeds: [optionsEmbed], components: [row] })
 
-        const collector = sentMsg.createMessageComponentCollector({
+        const collector = await sentMsg.createMessageComponentCollector({
             filter: i => i.user.id === message.author.id,
             time: 60000
         })
